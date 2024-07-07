@@ -6,7 +6,7 @@ const WEATHER_API_KEY = '6a2fef38914b2f4a5f01f8dffc08acbc';
 let chatIds = []; // массив для хранения chat_id пользователей
 let userCities = {}; // объект для хранения городов пользователей
 
-const bot = new TelegramBot(TELEGRAM_TOKEN, { polling: { interval: 3000, autoStart: true, params: { timeout: 150 } } });
+const bot = new TelegramBot(TELEGRAM_TOKEN, { polling: { interval: 3000, autoStart: true, params: { timeout: 200 } } });
 
 async function getWeather(city) {
   try {
@@ -57,7 +57,7 @@ async function quotes() {
 
 setInterval(()=>{
     quotes()
-}, 3600000)
+}, 100000)
 
 schedule.scheduleJob('0 7 * * *', async () => {
   try {
