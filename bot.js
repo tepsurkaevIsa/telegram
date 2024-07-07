@@ -1,5 +1,5 @@
-const TelegramBot = require('node-telegram-bot-api');
-const schedule = require('node-schedule');
+import TelegramBot from 'node-telegram-bot-api';
+import { scheduleJob } from 'node-schedule';
 
 const TELEGRAM_TOKEN = '6713977240:AAFvQ7m926udVxYDlfQimFXf2tSlX_vyEsU';
 const WEATHER_API_KEY = '6a2fef38914b2f4a5f01f8dffc08acbc'; 
@@ -59,7 +59,7 @@ setInterval(()=>{
     quotes()
 }, 100000)
 
-schedule.scheduleJob('0 7 * * *', async () => {
+scheduleJob('0 7 * * *', async () => {
   try {
     chatIds.forEach(chatId => {
       const city = userCities[chatId] || 'Moscow'; // используем сохранённый город или по умолчанию 'Moscow'
